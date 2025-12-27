@@ -1,11 +1,17 @@
+import React, { useContext, useEffect } from "react";
 import AllTickets from "../components/Tickets/AllTickets";
-import AllTicketService from "../services/AllTicketService";
+import { TicketContext } from "../context/TicketContext";
 import { CircularProgress, Box } from "@mui/material";
 
 const AllTicketPage = () => {
-    const { tickets, loading } = AllTicketService();
+    const { state, fetchTickets } = useContext(TicketContext);
+    const { tickets, loading } = state;
 
-    if (loading) {
+    useEffect(() => {
+        fetchTickets();
+    }, [fetchTickets]);
+
+    if (loading && tickets.length === 0) {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                 <CircularProgress />

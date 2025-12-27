@@ -19,7 +19,7 @@ const Home: React.FC = () => {
                         Welcome to HelpDesk
                     </Typography>
                     <Typography variant="h5" color="text.secondary">
-                        {state.user ? `Hello, ${state.user.firstName} (${role})` : 'Please login to manage tickets'}
+                        {state.user ? `Hello, ${state.user.name} (${role})` : 'Please login to manage tickets'}
                     </Typography>
                 </Box>
 
